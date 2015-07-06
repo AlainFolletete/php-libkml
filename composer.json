@@ -1,0 +1,21 @@
+{
+  "description": "KML Library",
+  "keywords": ["kml"],
+  "license": "MIT",
+  "require": {
+    "php": ">=5.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.1.*"
+  },
+  "autoload": {
+    "files": [
+      "libkml.php",
+      "libKML/KMLBuilder.php"
+    ],
+    "psr-0": {
+      "libKML": "./"
+    }
+  },
+  "minimum-stability": "dev"
+}
