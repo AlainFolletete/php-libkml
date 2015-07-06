@@ -1,4 +1,5 @@
 {
+  "name": "cdyweb/php-libkml",
   "description": "KML Library",
   "keywords": ["kml"],
   "license": "MIT",
