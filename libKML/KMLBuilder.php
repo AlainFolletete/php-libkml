@@ -1,6 +1,8 @@
 <?php
 namespace libKML;
 use libKML\features\containers\Document;
+use libKML\features\Feature;
+use libKML\links\Link;
 use libKML\style_selectors\Style;
 use libKML\features\NetworkLink;
 use libKML\features\containers\Folder;
@@ -54,7 +56,10 @@ function processAbstractView(&$abstractView, $abstractViewXMLObject) {
     processKMLObject($abstractView, $abstractViewXMLObject);
 }
 
-
+/**
+ * @param $feature Feature
+ * @param $featureXMLObject
+ */
 function processFeature(&$feature, $featureXMLObject) {
     processKMLObject($feature, $featureXMLObject);
 
@@ -77,15 +82,30 @@ function processFeature(&$feature, $featureXMLObject) {
             $feature->setTimePrimitive(call_user_func('libKML\build'. $key, $value));
         } elseif ($key == 'Style' || $key == 'StyleMap') {
             $feature->addStyleSelector(call_user_func('libKML\build'. $key, $value));
+        } elseif ($key == 'Link') {
+            $feature->setLink(buildLink($value));
         } elseif ($key == 'atom:author') {
             $feature->setAuthor(buildAuthor($value));
         }
     }
 }
 
+function buildLink(\SimpleXMLElement $xml) {
+    $link = new Link();
+    $content = $xml->children();
+    $object_properties = array('href');
+    foreach($content as $key => $value) {
+        if (in_array($key, $object_properties)) {
+            call_user_func(array($link, 'set'. ucfirst($key)), $value->__toString());
+        }
+    }
+    return $link;
+}
+
 function buildNetworkLink($networkLinkXMLObject) {
     $networkLink = new NetworkLink();
     processFeature($networkLink, $networkLinkXMLObject);
+
 
 
     return $networkLink;

@@ -2,6 +2,7 @@
 namespace libKML\features;
 use libKML\KMLObject;
 use libKML\Region;
+use libKML\links\Link;
 
 /**
  *  Feature abstract class
@@ -13,7 +14,10 @@ abstract class Feature extends KMLObject {
     protected $visibility;
     protected $open;
     protected $author;
+
+    /** @var Link */
     protected $link;
+
     protected $address;
     protected $addressDetails;
     protected $phoneNumber;
@@ -259,5 +263,39 @@ abstract class Feature extends KMLObject {
     public function getExtendedData() {
         return $this->extendedData;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * @return \libKML\links\Link
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param $link \libKML\links\Link
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+    }
+
+
 
 }
