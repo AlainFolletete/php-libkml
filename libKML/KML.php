@@ -1,5 +1,7 @@
 <?php
 namespace libKML;
+use libKML\features\Feature;
+use libKML\features\containers\Container;
 
 /**
  *   kml root element class
@@ -7,7 +9,7 @@ namespace libKML;
 
 class KML {
 
-    private $networkLinkControl;
+    /** @var Feature */
     private $feature;
     private $version = KML_DEFAULT_SCHEMA_VERSION;
     private $encoding = KML_DEFAULT_ENCODING;
@@ -99,6 +101,7 @@ class KML {
             $json_data['features'] = array();
 
             foreach($all_features as $feature) {
+                /** @var Feature $feature */
                 $json_feature = $feature->toExtGeoJSON();
                 if ($json_feature) {
                     $json_data['features'][] = $json_feature;
