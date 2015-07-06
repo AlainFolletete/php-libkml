@@ -106,8 +106,6 @@ function buildNetworkLink($networkLinkXMLObject) {
     $networkLink = new NetworkLink();
     processFeature($networkLink, $networkLinkXMLObject);
 
-
-
     return $networkLink;
 }
 
