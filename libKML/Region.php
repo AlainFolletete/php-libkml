@@ -1,5 +1,7 @@
 <?php
 namespace libKML;
+use libKML\features\LatLonAltBox;
+use libKML\features\Lod;
 
 /**
  *  Region class
@@ -7,7 +9,14 @@ namespace libKML;
 
 class Region extends KMLObject {
 
+    /**
+     * @var LatLonAltBox
+     */
     private $latLonAltBox;
+
+    /**
+     * @var Lod
+     */
     private $lod;
 
     public function __toString() {

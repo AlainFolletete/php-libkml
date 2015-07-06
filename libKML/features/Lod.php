@@ -46,8 +46,14 @@ class Lod extends KMLObject {
     }
     public function __toString()
     {
-        // TODO: Implement __toString() method.
-        return '';
+        $result = array();
+        $result[] = '<Lod>';
+        if (isset($this->minLodPixels)) $result[] = "<minLodPixels>{$this->minLodPixels}</minLodPixels>";
+        if (isset($this->maxLodPixels)) $result[] = "<maxLodPixels>{$this->maxLodPixels}</maxLodPixels>";
+        if (isset($this->minFadeExtent)) $result[] = "<minFadeExtent>{$this->minFadeExtent}</minFadeExtent>";
+        if (isset($this->maxFadeExtent)) $result[] = "<maxFadeExtent>{$this->maxFadeExtent}</maxFadeExtent>";
+        $result[] = '</Lod>';
+        return implode("\n", $result);
     }
 
 }

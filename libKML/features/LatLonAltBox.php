@@ -8,6 +8,9 @@ use libKML\KMLObject;
 
 class LatLonAltBox extends KMLObject {
 
+    /**
+     * @var AltitudeMode
+     */
     private $altitudeMode;
     private $minAltitude;
     private $maxAltitude;
@@ -19,7 +22,7 @@ class LatLonAltBox extends KMLObject {
     public function __toString() {
         $output = array();
 
-        if (isset($north, $south, $east, $west)) {
+        if (isset($this->north, $this->south, $this->east, $this->west)) {
             $output[] = '<LanLonAltBox>';
 
             $output[] = sprintf("\t<north>%f</north>", $this->north);
