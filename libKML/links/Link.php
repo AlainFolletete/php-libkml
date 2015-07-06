@@ -1,5 +1,6 @@
 <?php
-namespace libKML;
+namespace libKML\links;
+use libKML\KMLObject;
 
 /**
  *  Link class

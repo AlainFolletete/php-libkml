@@ -1,5 +1,7 @@
 <?php
-namespace libKML;
+namespace libKML\features;
+use libKML\KMLObject;
+use libKML\Region;
 
 /**
  *  Feature abstract class

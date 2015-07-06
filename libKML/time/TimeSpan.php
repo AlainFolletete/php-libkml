@@ -1,5 +1,5 @@
 <?php
-namespace libKML;
+namespace libKML\time;
 
 /**
  *  TimeSpan class

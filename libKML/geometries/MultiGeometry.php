@@ -1,5 +1,5 @@
 <?php
-namespace libKML;
+namespace libKML\geometries;
 
 /**
  *  MultiGeometry class

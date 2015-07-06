@@ -1,5 +1,5 @@
 <?php
-namespace libKML;
+namespace libKML\links;
 
 /**
  *   NetworkLinkControl class

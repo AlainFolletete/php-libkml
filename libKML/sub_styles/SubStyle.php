@@ -1,5 +1,6 @@
 <?php
-namespace libKML;
+namespace libKML\sub_styles;
+use libKML\KMLObject;
 
 /**
  *  SubStyle abstract class
@@ -7,4 +8,3 @@ namespace libKML;
 
 abstract class SubStyle extends KMLObject {}
 
-?>

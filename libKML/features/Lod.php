@@ -1,5 +1,6 @@
 <?php
-namespace libKML;
+namespace libKML\features;
+use libKML\KMLObject;
 
 /**
  *  Lod class

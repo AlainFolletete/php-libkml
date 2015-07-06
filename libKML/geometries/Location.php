@@ -1,12 +1,10 @@
 <?php
-namespace libKML;
+namespace libKML\geometries;
+use libKML\KMLObject;
 
 /**
  *  Location class
  */
-
-require_once("KMLObject.php");
-
 class Location extends KMLObject {
 
     private $longitude;

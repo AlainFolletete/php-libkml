@@ -1,11 +1,12 @@
 <?php
-namespace libKML;
+namespace libKML\features;
+use libKML\KMLObject;
 
 /**
  *  LatLonAltBox class
  */
 
-class LanLonAltBox extends KMLObject {
+class LatLonAltBox extends KMLObject {
 
     private $altitudeMode;
     private $minAltitude;

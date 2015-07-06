@@ -1,5 +1,38 @@
 <?php
 namespace libKML;
+use libKML\features\containers\Document;
+use libKML\style_selectors\Style;
+use libKML\features\NetworkLink;
+use libKML\features\containers\Folder;
+use libKML\features\Placemark;
+use libKML\sub_styles\color_styles\IconStyle;
+use libKML\sub_styles\color_styles\LabelStyle;
+use libKML\sub_styles\color_styles\PolyStyle;
+use libKML\field_types\atom\Author;
+use libKML\field_types\Vec2Type;
+use libKML\sub_styles\color_styles\LineStyle;
+use libKML\field_types\ColorMode;
+use libKML\sub_styles\BalloonStyle;
+use libKML\sub_styles\ListStyle;
+use libKML\sub_styles\ItemIcon;
+use libKML\field_types\ListItemType;
+use libKML\style_selectors\StyleMap;
+use libKML\style_selectors\Pair;
+use libKML\field_types\Coordinates;
+use libKML\field_types\RefreshMode;
+use libKML\features\AltitudeMode;
+use libKML\geometries\Polygon;
+use libKML\geometries\MultiGeometry;
+use libKML\geometries\LinearRing;
+use libKML\geometries\LineString;
+use libKML\views\LookAt;
+use libKML\views\Camera;
+use libKML\geometries\Point;
+use libKML\features\LatLonAltBox;
+use libKML\features\Lod;
+use libKML\features\overlays\GroundOverlay;
+use libKML\features\overlays\ScreenOverlay;
+use libKML\features\overlays\LatLonBox;
 
 /**
  *  KMLBuilder
@@ -102,6 +135,38 @@ function buildLatLonBox($latLonBoxXMLObject) {
     }
 
     return $latLonBox;
+}
+
+function buildLatLonAltBox($latLonBoxXMLObject) {
+    $latLonBox = new LatLonAltBox();
+    processKMLObject($latLonBox, $latLonBoxXMLObject);
+
+    $latLonBoxContent = $latLonBoxXMLObject->children();
+
+    $simple_properties = array('north', 'east', 'west', 'south', 'rotation');
+    foreach($latLonBoxContent as $key => $value) {
+        if (in_array($key, $simple_properties)) {
+            call_user_func(array($latLonBox, 'set'. ucfirst($key)), $value->__toString());
+        }
+    }
+
+    return $latLonBox;
+}
+
+function buildLod($lodXMLObject) {
+    $lod = new Lod();
+    processKMLObject($lod, $lodXMLObject);
+
+    $content = $lodXMLObject->children();
+
+    $simple_properties = array('minLodPixels','maxLodPixels');
+    foreach($content as $key => $value) {
+        if (in_array($key, $simple_properties)) {
+            call_user_func(array($lod, 'set'. ucfirst($key)), $value->__toString());
+        }
+    }
+
+    return $lod;
 }
 
 function processOverlay(&$overlay, $overlayXMLObject) {

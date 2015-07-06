@@ -1,6 +1,6 @@
 <?php
 
-namespace libKML;
+namespace libKML\geometries;
 
 /**
  *  Polygon class

@@ -1,5 +1,6 @@
 <?php
-namespace libKML;
+namespace libKML\geometries;
+use libKML\KMLObject;
 
 /**
  *  Scale class

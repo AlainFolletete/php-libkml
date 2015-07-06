@@ -1,11 +1,11 @@
 <?php
-namespace libKML;
+namespace libKML\features\containers;
 
 /**
  *  Container abstract class
  */
 
-abstract class Container extends Feature {
+abstract class Container extends \libKML\features\Feature {
   
   protected $features = array();
   
