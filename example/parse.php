@@ -69,6 +69,11 @@ if (isset($_REQUEST['op'])) {
             if (isset($_FILES['kml'])) {
                 $kml_file =  __DIR__ .'/files/'. session_id() .'.kml';
                 move_uploaded_file($_FILES['kml']['tmp_name'], $kml_file);
+                if (preg_match('#\.kmz$#i',$_FILES['kml']['name'])) {
+                    $zip = new ZipArchive();
+                    $zip->open($kml_file);
+                    file_put_contents($kml_file, $zip->getFromName('doc.kml'));
+                }
                 $kml_file_url = 'http://'. $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) .'/files/'. basename($kml_file);
                 $_SESSION['file'] = true;
                 $reset_cache = true;
