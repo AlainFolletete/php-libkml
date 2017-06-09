@@ -1,5 +1,8 @@
 <?php
+
 namespace libKML\style_selectors;
+
+use \libKML\KMLObject;
 
 /**
  *  Pair class
